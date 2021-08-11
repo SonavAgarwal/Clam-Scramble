@@ -8,7 +8,7 @@ public class InputHandler : NetworkBehaviour, MotionModifier {
     CharacterController characterController;
     MotionHandler motionHandler;
 
-    private float moveSpeed = 10 * 20;
+    private float moveSpeed = 50f;
     private float jumpSpeed = 15f;
     
     Vector3 velocity;
@@ -28,7 +28,7 @@ public class InputHandler : NetworkBehaviour, MotionModifier {
     }
 
     
-    void Update() {
+    void FixedUpdate() {
         if (IsLocalPlayer) {
             Move();
         }
@@ -76,11 +76,11 @@ public class InputHandler : NetworkBehaviour, MotionModifier {
         }
 
         if (characterController.isGrounded) {
-            velocity.x = velocity.x * 0.985f ;
-            velocity.z = velocity.z * 0.985f ;
+            velocity.x = velocity.x * 0.90f ;
+            velocity.z = velocity.z * 0.90f ;
         } else {
-            velocity.x = velocity.x * 0.99f ;
-            velocity.z = velocity.z * 0.99f ;
+            velocity.x = velocity.x * 0.96f ;
+            velocity.z = velocity.z * 0.96f ;
         }
 
  

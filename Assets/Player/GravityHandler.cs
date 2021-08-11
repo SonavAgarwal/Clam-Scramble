@@ -27,7 +27,7 @@ public class GravityHandler : NetworkBehaviour, MotionModifier {
     }
 
     
-    void Update() {
+    void FixedUpdate() {
         if (IsLocalPlayer) {
             Move();
         }
@@ -42,5 +42,9 @@ public class GravityHandler : NetworkBehaviour, MotionModifier {
         }
 
         Motion = velocity;
+    }
+
+    public void ResetGravity() {
+        velocity.y = 0;
     }
 }

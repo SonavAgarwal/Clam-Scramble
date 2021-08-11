@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,11 +24,21 @@ public class HealthHandler : NetworkBehaviour {
 
     [ClientRpc]
     void RespawnClientRpc() {
-        Debug.Log("ontriggerenter");
-        CharacterController cc = GetComponent<CharacterController>();
-        cc.enabled = false;
-        transform.position = new Vector3(0f, 10f, 0f);
-        cc.enabled = true;
-        Debug.Log("moved polayer");
+        try {
+            CharacterController cc = GetComponent<CharacterController>();
+            GetComponent<GravityHandler>().ResetGravity();
+            cc.enabled = false;
+            transform.position = new Vector3(0f, 20f, 0f);
+            cc.enabled = true;
+            Debug.Log("moved polayer");
+        } catch (Exception e) {
+            ShowErrorServerRpc(e.Message);
+        }
+    }
+
+    [ServerRpc]
+    void ShowErrorServerRpc(string s) {
+        Debug.Log("exception");
+        Debug.Log(s);
     }
 }

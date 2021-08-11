@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MLAPI;
+using MLAPI.Messaging;
 
 public class MotionHandler : NetworkBehaviour
 {
@@ -17,7 +18,7 @@ public class MotionHandler : NetworkBehaviour
         }
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (IsLocalPlayer) {
             Move();
         }
@@ -25,6 +26,7 @@ public class MotionHandler : NetworkBehaviour
 
     void Move() {
         Vector3 movement = Vector3.zero;
+
 
         foreach (MotionModifier motion in motions) {
             movement += motion.Motion;

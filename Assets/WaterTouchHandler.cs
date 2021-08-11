@@ -17,8 +17,8 @@ public class WaterTouchHandler : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player") {
-            other.gameObject.GetComponent<HealthHandler>().Respawn();
-        }
+        // if (other.gameObject.tag == "Player") {
+        //     other.gameObject.GetComponent<HealthHandler>().Respawn();
+        // }
     } 
 }

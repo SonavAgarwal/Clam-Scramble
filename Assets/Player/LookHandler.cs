@@ -13,13 +13,15 @@ public class LookHandler : NetworkBehaviour {
 
     public Transform cameraTransform;
     public Transform camera3Transform;
+    public Transform camera2Transform;
 
-    private int currentCamera = 0; // 0 for first person, 1 for 3rd person
+    private int currentCamera = 0; // 0 for first person, 1 for 3rd person, 2 for 2nd person
     private static int perspectiveChangeCooldownTime = 150;
     private int perspectiveChangeCooldown = perspectiveChangeCooldownTime;
 
     void Start () {
         setCamera3Active(false);  
+        setCamera2Active(false);  
 
         if (!IsLocalPlayer) {
             setCamera1Active(false);
@@ -41,6 +43,11 @@ public class LookHandler : NetworkBehaviour {
     private void setCamera3Active(bool active) {
         camera3Transform.GetComponent<AudioListener>().enabled = active;
         camera3Transform.GetComponent<Camera>().enabled = active; 
+    }
+
+    private void setCamera2Active(bool active) {
+        camera2Transform.GetComponent<AudioListener>().enabled = active;
+        camera2Transform.GetComponent<Camera>().enabled = active; 
     }
 
     void Update() {
@@ -73,13 +80,20 @@ public class LookHandler : NetworkBehaviour {
     void CheckPerspective() {
         if (Input.GetKey(KeyCode.R) && perspectiveChangeCooldown <= 0) { 
             currentCamera += 1;
-            currentCamera = currentCamera % 2;
+            currentCamera = currentCamera % 3;
             if (currentCamera == 0) {
                 setCamera1Active(true);
                 setCamera3Active(false);
+                setCamera2Active(false);
             } else if (currentCamera == 1) {
                 setCamera1Active(false);
                 setCamera3Active(true);
+                setCamera2Active(false);
+            } else if (currentCamera == 2) {
+                setCamera1Active(false);
+                setCamera3Active(false);
+                setCamera2Active(true);
+
             }
 
             perspectiveChangeCooldown = perspectiveChangeCooldownTime;
