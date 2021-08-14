@@ -5,16 +5,33 @@ using MLAPI;
 using MLAPI.NetworkVariable; 
 using MLAPI.Messaging;
 
-public class MapStart : MonoBehaviour 
+public class MapStart : NetworkBehaviour 
 {
     private NetworkVariableInt islandSeed = new NetworkVariableInt(-10);
     // Start is called before the first frame update
-    
+
+    void Start()
+    {
+        islandSeed.OnValueChanged += UpdateMap;
+        if (IsServer)
+        {
+            Debug.Log("is server");
+            islandSeed.Value = UnityEngine.Random.Range(0, 1000);
+        }
+
+    }
+
+    void UpdateMap(int oldValue, int newValue)
+    {
+        GetComponent<MapGenerator>().MakeMap(islandSeed.Value);
+
+    }
+
     // void OnEnable() {
     //     ConnectionHandler.BeforeGameStarted += BeforeGameStarted;
     //     ConnectionHandler.OnGameStarted += OnGameStarted;
     // }
-    
+
     // void OnDisable() {
     //     ConnectionHandler.BeforeGameStarted -= BeforeGameStarted;
     //     ConnectionHandler.OnGameStarted -= OnGameStarted;
@@ -28,7 +45,7 @@ public class MapStart : MonoBehaviour
     //     }
     //     PrintSeedServerRpc(islandSeed.Value + "");
     //  }
-    
+
     // void OnGameStarted() { 
     //     PrintSeedServerRpc(islandSeed.Value + " is seed");
     //     GetComponent<MapGenerator>().MakeMap(islandSeed.Value);
@@ -43,6 +60,6 @@ public class MapStart : MonoBehaviour
     // // Update is called once per frame
     // void Update()
     // {
-        
+
     // }
 }

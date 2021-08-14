@@ -8,7 +8,7 @@ public class GravityHandler : NetworkBehaviour, MotionModifier {
     CharacterController characterController;
     MotionHandler motionHandler;
 
-    private float gravity = -16f;
+    private float gravity = -25f;
      
     Vector3 velocity;
  

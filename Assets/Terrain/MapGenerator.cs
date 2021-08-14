@@ -46,14 +46,19 @@ public class MapGenerator : MonoBehaviour {
 		falloffMap = FalloffGenerator.GenerateFalloffMap (mapChunkSize);
 	}
 
+    void Start()
+    {
+        
+    }
 
-	public static int mapChunkSize {
+    public static int mapChunkSize {
 		get {
 			if (instance == null) {
 				instance = FindObjectOfType<MapGenerator> ();
 			}
 
-			if (instance.useFlatShading) {
+			if (true) {
+			//if (instance.useFlatShading) {
 				return 199;
 				// return 95;
 			} else {
