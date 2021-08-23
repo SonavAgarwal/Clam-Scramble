@@ -52,7 +52,7 @@ public class LobbyManager : NetworkBehaviour
 
         if (ready)
         {
-            NetworkSceneManager.SwitchScene("Arena");
+            NetworkSceneManager.SwitchScene("BoxArena");
         }
     }
 

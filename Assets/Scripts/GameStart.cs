@@ -1,6 +1,8 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
+using MLAPI.SceneManagement;
 
 public class GameStart : MonoBehaviour
 {
@@ -10,10 +12,9 @@ public class GameStart : MonoBehaviour
         
         if (Screen.fullScreen) {
             Screen.fullScreen = false;
-        }
-        
+        } 
     }
-
+        
     // Update is called once per frame
     void Update()
     {
