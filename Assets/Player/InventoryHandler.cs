@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MLAPI;
 
-public class InventoryHandler : MonoBehaviour
+public class InventoryHandler : NetworkBehaviour
 {
 
     private GameObject handObject = null;

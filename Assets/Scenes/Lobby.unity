@@ -718,6 +718,8 @@ MonoBehaviour:
     NetworkPrefabs:
     - Prefab: {fileID: 5625486250212643101, guid: 5909aafd7c854734e81cc86ad4ad36da, type: 3}
       PlayerPrefab: 1
+    - Prefab: {fileID: 1914628024571368669, guid: 5eb73d86d4d8de949ab9d45ff56f58e2, type: 3}
+      PlayerPrefab: 0
     PlayerPrefabHash:
       id: 0
     CreatePlayerPrefab: 1
@@ -782,6 +784,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1791490339761796584, guid: 5eb73d86d4d8de949ab9d45ff56f58e2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1914628024571368668, guid: 5eb73d86d4d8de949ab9d45ff56f58e2, type: 3}
       propertyPath: m_RootOrder
       value: 10

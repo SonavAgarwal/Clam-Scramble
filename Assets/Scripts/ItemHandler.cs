@@ -31,30 +31,21 @@ public class ItemHandler : NetworkBehaviour
     void FixedUpdate()
     {
         if (pickupCooldown > 0) pickupCooldown--;
-    }
+        if (location == 1 && player != null)
+        {
 
-    //void FixedUpdate()
-    //{
-    //    // Debug.Log(player);
-    //    // Debug.Log(player.transform);
-    //    //Debug.Log(player.transform.Find("Camera/Hand"));
-    //    //Debug.Log(player.transform.Find("Camera/Hand").transform);
-    //    if (location == 1 && player != null)
-    //    {
+            var playerHandPosition = Vector3.zero;
+            var zeroRotation = Quaternion.identity;
+            transform.localPosition = playerHandPosition;
+            transform.localRotation = zeroRotation;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+        else if (player == null)
+        {
+            location = 0;
+        }}
 
-    //        //var playerHandPosition = Vector3.zero;
-    //        //var zeroRotation = Quaternion.identity;
-    //        //transform.localPosition = playerHandPosition;
-    //        //transform.localRotation = zeroRotation;
-    //        //rb.velocity = Vector3.zero;
-    //        //rb.angularVelocity = Vector3.zero;
-    //        Debug.Log("rb kinematic");
-    //        Debug.Log(rb.isKinematic);
-    //    }
-    //    else if (player == null) {
-    //        location = 0;
-    //    }
-    //}
 
     public void Drop()
     {

@@ -6,7 +6,7 @@ using MLAPI.NetworkVariable;
 
 public class GunHandler : NetworkBehaviour
 {
-    private NetworkVariableBool shooting = new NetworkVariableBool(false);
+    private NetworkVariable<bool> shooting = new NetworkVariable<bool>(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.Everyone }, false);
     private GameObject bullets;
     private ParticleSystem.EmissionModule bulletsEM;
 
@@ -16,6 +16,7 @@ public class GunHandler : NetworkBehaviour
         Debug.Log("bullets: ");
         Debug.Log(bullets);
         bulletsEM = bullets.GetComponent<ParticleSystem>().emission;
+        ListenChanges();
     }
 
     // Update is called once per frame
@@ -31,5 +32,15 @@ public class GunHandler : NetworkBehaviour
     public void StopShoot()
     {
         shooting.Value = false;
+    }
+
+    void ListenChanges()
+    {
+        shooting.OnValueChanged += valueChanged;
+    }
+
+    void valueChanged(bool prevF, bool newF)
+    {
+        Debug.Log("myFloat went from " + prevF + " to " + newF);
     }
 }

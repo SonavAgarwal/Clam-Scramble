@@ -17,20 +17,18 @@ public class AttackHandler : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (IsLocalPlayer) HandleAttack();
+        
+    }
+
+    private void HandleAttack()
+    {
         if (inventory.HoldingItem)
         {
-            Debug.Log("1");
-            Debug.Log(inventory);
-            Debug.Log(inventory.GetHeld());
-            Debug.Log(inventory.GetHeld().GetComponent<ItemHandler>());
-            Debug.Log(inventory.GetHeld().GetComponent<ItemHandler>().ItemType);
-            Debug.Log(inventory.GetHeld().GetComponent<ItemHandler>().ItemType == "Weapon");
             if (inventory.GetHeld().GetComponent<ItemHandler>().ItemType == "Weapon")
             {
-                Debug.Log("2");
                 if (Input.GetMouseButton(0))
                 {
-                    Debug.Log("3");
                     inventory.GetHeld().GetComponent<GunHandler>().StartShoot();
             
                 } else

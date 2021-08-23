@@ -5040,7 +5040,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1914628024571368669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
@@ -5136,6 +5136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fc63b8567767941bf2e425a811d3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ItemType: Weapon
 --- !u!54 &2168501225072585038
 Rigidbody:
   m_ObjectHideFlags: 0
