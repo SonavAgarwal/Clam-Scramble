@@ -29,11 +29,11 @@ public class AttackHandler : NetworkBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    inventory.GetHeld().GetComponent<GunHandler>().StartShoot();
+                    inventory.GetHeld().GetComponent<GunHandler>().StartAttack();
             
                 } else
                 {
-                    inventory.GetHeld().GetComponent<GunHandler>().StopShoot();
+                    inventory.GetHeld().GetComponent<GunHandler>().StopAttack();
                 }
             }
         }

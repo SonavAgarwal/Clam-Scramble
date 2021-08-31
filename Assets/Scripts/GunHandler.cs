@@ -10,37 +10,48 @@ public class GunHandler : NetworkBehaviour
     private GameObject bullets;
     private ParticleSystem.EmissionModule bulletsEM;
 
+    private ItemHandler itemHandler;
+
     void Start()
     {
+        itemHandler = GetComponent<ItemHandler>();
         bullets = this.transform.Find("BulletParticles").gameObject;
         Debug.Log("bullets: ");
         Debug.Log(bullets);
         bulletsEM = bullets.GetComponent<ParticleSystem>().emission;
-        ListenChanges();
+        //ListenChanges();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     { 
         bulletsEM.rateOverTime = shooting.Value ? 10f : 0f;
+        if (itemHandler.IsHeld() && shooting.Value)
+        {
+            var player = itemHandler.GetPlayer();
+            //var kbMotion = new KnockbackMotion();
+            var kbMotion = gameObject.AddComponent<KnockbackMotion>();
+            kbMotion.SetKnockbackMotion(this.transform.forward * -5f);
+            player.GetComponent<MotionHandler>().AddMotion(kbMotion);
+        }
     }
 
-    public void StartShoot()
+    public void StartAttack()
     {
         shooting.Value = true;
     }
-    public void StopShoot()
+    public void StopAttack()
     {
         shooting.Value = false;
     }
 
-    void ListenChanges()
-    {
-        shooting.OnValueChanged += valueChanged;
-    }
+    //void ListenChanges()
+    //{
+    //    shooting.OnValueChanged += valueChanged;
+    //}
 
-    void valueChanged(bool prevF, bool newF)
-    {
-        Debug.Log("myFloat went from " + prevF + " to " + newF);
-    }
+    //void valueChanged(bool prevF, bool newF)
+    //{
+    //    Debug.Log("myFloat went from " + prevF + " to " + newF);
+    //}
 }

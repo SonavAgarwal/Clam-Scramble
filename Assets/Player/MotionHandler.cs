@@ -37,9 +37,12 @@ public class MotionHandler : NetworkBehaviour
 
     public void AddMotion(MotionModifier motion) {
         motions.Add(motion);
+        motion.motionHandler = this;
     }
 
     public void RemoveMotion(MotionModifier motion) {
         motions.Remove(motion);
+        motion.motionHandler = null;
+        Destroy((MonoBehaviour) motion);
     }
 }

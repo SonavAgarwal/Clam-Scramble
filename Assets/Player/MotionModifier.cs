@@ -5,5 +5,6 @@ using UnityEngine;
 public interface MotionModifier {
     
     Vector3 Motion { get; }
+    MotionHandler motionHandler { get; set; }
 
 }

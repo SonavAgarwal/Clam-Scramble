@@ -6,7 +6,7 @@ using MLAPI;
 public class GravityHandler : NetworkBehaviour, MotionModifier {
 
     CharacterController characterController;
-    MotionHandler motionHandler;
+    [HideInInspector] public MotionHandler motionHandler { get; set; }
 
     private float gravity = -25f;
      

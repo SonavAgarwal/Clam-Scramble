@@ -6,7 +6,7 @@ using MLAPI;
 public class InputHandler : NetworkBehaviour, MotionModifier {
 
     CharacterController characterController;
-    MotionHandler motionHandler;
+    [HideInInspector] public MotionHandler motionHandler { get; set; }
 
     private float moveSpeed = 50f;
     private float jumpSpeed = 15f;
