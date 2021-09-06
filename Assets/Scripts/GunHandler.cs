@@ -24,9 +24,10 @@ public class GunHandler : NetworkBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    { 
-        bulletsEM.rateOverTime = shooting.Value ? 10f : 0f;
-        if (itemHandler.IsHeld() && shooting.Value)
+    {
+        bool doShoot = itemHandler.IsHeld() && shooting.Value;
+        bulletsEM.rateOverTime = doShoot ? 10f : 0f; 
+        if (doShoot)
         {
             var player = itemHandler.GetPlayer();
             //var kbMotion = new KnockbackMotion();

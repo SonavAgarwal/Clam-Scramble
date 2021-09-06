@@ -10,6 +10,7 @@ public class LobbyManager : NetworkBehaviour
 
     public GameObject lobbyCamera;
 
+    public GameObject cratePrefab, gunPrefab;
 
     List<ulong> clientsReady = new List<ulong>();
 
@@ -33,7 +34,8 @@ public class LobbyManager : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //GameObject go = Instantiate(cratePrefab, new Vector3(0, 100, 0), Quaternion.identity);
+        //go.GetComponent<NetworkObject>().Spawn();
     }
 
     // Update is called once per frame

@@ -6,7 +6,7 @@ using MLAPI;
 public class LookHandler : NetworkBehaviour {
 
     private float mouseSensitivity = 5f;
-    private float clampAngle = 80.0f;
+    private float clampAngle = 89.0f;
 
     private float rotY = 0.0f; // rotation around the up/y axis
     private float rotX = 0.0f; // rotation around the right/x axis

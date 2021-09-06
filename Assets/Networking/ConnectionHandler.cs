@@ -33,7 +33,8 @@ public class ConnectionHandler : NetworkBehaviour {
     public void Join() {
         NetworkManager.Singleton.StartClient();
         connectPanel.SetActive(false);
-
+        if (OnServerStarted != null)
+            OnServerStarted();
         // if (OnGameStarted != null)    
         //     OnGameStarted();
     }
